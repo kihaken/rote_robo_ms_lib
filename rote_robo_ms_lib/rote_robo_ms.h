@@ -2,13 +2,13 @@
 #define ROTE_ROBO_MS_H
 
 #include "mbed.h"
-#include "robo_ms.h"
+#include "rbms.h"
 
 class rote_robo_ms
 {
 public:
-    rote_robo_ms(CAN &can, robo_ms robo_ms, int motornum, float rad) // CANのインスタンス,robo_msのインスタンス,制御するモータの番号(0から),制御するモータの半径
-        : _can(can), _robo_ms(robo_ms), _motornum(motornum), _rad(rad), sumRstatic(0)
+    rote_robo_ms(CAN &can, rbms rbms, int motornum, float rad) // CANのインスタンス,robo_msのインスタンス,制御するモータの番号(0から),制御するモータの半径
+        : _can(can), _rbms(rbms), _motornum(motornum), _rad(rad), sumRstatic(0)
     {
         _can.frequency(1000000); // CANのビットレートを指定
         _can.mode(CAN::Normal);  // CANのモードをNormalに設定
@@ -24,7 +24,7 @@ public:
 private:
     CAN &_can;
     CANMessage _msg;
-    robo_ms _robo_ms;
+    rbms _rbms;
     bool pulsebrake = false, stop = false, _debugmsg, _brake;
     short deltaR, tmpR, rote, spd;
     int _rad, _motornum, _length, _torque, _torque_sign;

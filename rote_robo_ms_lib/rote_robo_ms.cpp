@@ -1,6 +1,8 @@
 // length_robo_ms.cpp ver1.0
 // 改善案があったら好きに書き換えてね。
 // いやだね！！！byしゃか
+// length = rad * (2π / 360)(0.01744) * rote
+
 #include "rote_robo_ms.h"
 #include "mbed.h"
 
@@ -37,7 +39,7 @@ void rote_robo_ms::rote_robo_ms_update(CANMessage *msg, int BUFFER_MAX)
         if (msg[i].id == msgnum)
             _msg = msg[i];
     }
-    _robo_ms.can_data_read(_msg, &rote, &spd); // 要検証・改善？
+    _rbms.rbms_read(_msg, &rote, &spd);
     if (rote < tmpR && spd > 0)
     {
         deltaR = (360 - tmpR) + rote;

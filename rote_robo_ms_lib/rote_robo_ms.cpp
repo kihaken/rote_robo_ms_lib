@@ -40,9 +40,10 @@ void rote_robo_ms::rote_robo_ms_update(CANMessage *msg, int BUFFER_MAX)
             _msg = msg[i];
     }
     _rbms.rbms_read(_msg, &rote, &spd);
+    
     if (rote < tmpR && spd > 0)
     {
-        deltaR = (360 - tmpR) + rote;
+        deltaR = (short)(360 - tmpR) + rote;
     }
     else if (rote > tmpR && spd > 0)
     {
@@ -50,7 +51,7 @@ void rote_robo_ms::rote_robo_ms_update(CANMessage *msg, int BUFFER_MAX)
     } // 正転時
     if (rote > tmpR && spd < 0)
     {
-        deltaR = (360 - rote) + tmpR;
+        deltaR = (short)(360 - rote) + tmpR;
         deltaR *= -1;
     }
     else if (rote < tmpR && spd < 0)
@@ -59,7 +60,7 @@ void rote_robo_ms::rote_robo_ms_update(CANMessage *msg, int BUFFER_MAX)
     } // 反転時
     position = (float)sumRstatic / 36 * 0.01744 * _rad;
     // printf("%x\n",msgnum);
-    // printf("motor%d length:%d spd:%d rote:%d deltaR:%d\n",_motornum,(int)sumLength,spd,(int)sumRdynamic,deltaR);
+    printf("motor%d length:%d spd:%d rote:%d deltaR:%d\n",_motornum,(int)sumLength,spd,(int)sumRdynamic,deltaR);
 
     sumRdynamic += deltaR;
     sumRstatic += deltaR;

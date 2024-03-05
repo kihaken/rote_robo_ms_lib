@@ -58,14 +58,11 @@ void rote_robo_ms::rote_robo_ms_update(CANMessage *msg, int BUFFER_MAX)
     {
         deltaR = rote - tmpR;
     } // 反転時
-    if (rote == tmpR)
-    {
-        deltaR = 0;
-    }
+
 
     position = (float)sumRstatic / 36 * 0.01744 * _rad;
     // printf("%x\n",msgnum);
-    printf("motor%d length:%d spd:%d rote:%d deltaR:%d\n",_motornum,(int)sumLength,spd,(int)sumRdynamic,deltaR);
+    // printf("motor%d length:%d spd:%d rote:%d deltaR:%d\n",_motornum,(int)sumLength,spd,(int)sumRdynamic,deltaR);
 
     sumRdynamic += deltaR;
     sumRstatic += deltaR;

@@ -57,7 +57,11 @@ void rote_robo_ms::rote_robo_ms_update(CANMessage *msg, int BUFFER_MAX)
     else if (rote < tmpR && spd < 0)
     {
         deltaR = rote - tmpR;
-    } // 反転時
+    } // 反転時    
+    if (rote == tmpR) // ごり押した部分!!!!
+    {
+        deltaR = 0;
+    }
 
 
     position = (float)sumRstatic / 36 * 0.01744 * _rad;

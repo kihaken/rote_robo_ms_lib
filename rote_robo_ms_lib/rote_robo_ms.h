@@ -17,7 +17,6 @@ public:
     void length_to_rote_set(int length, int torque, bool brake = false, bool debugmsg = false);
     void rote_robo_ms_update(CANMessage *msg, int BUFFER_MAX);
     void rote_robo_ms_update_write(int *motor, int submotornum = -1);
-    long get_rote_dynamic();
     long get_rote_sum();
     void set_static_reset(int num);
     int position = 0;

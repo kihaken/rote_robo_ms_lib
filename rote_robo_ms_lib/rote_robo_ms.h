@@ -7,7 +7,7 @@
 class rote_robo_ms
 {
 public:
-    rote_robo_ms(CAN &can, rbms rbms, int motornum, float rad) // CANのインスタンス,rbmsのインスタンス,制御するモータの番号(0から),制御するモータの半径
+    rote_robo_ms(CAN &can, rbms rbms, int motornum, float rad = 16) // CANのインスタンス,rbmsのインスタンス,制御するモータの番号(0から),制御するモータの半径
         : _can(can), _rbms(rbms), _motornum(motornum), _rad(rad), sumRstatic(0)
     {
         _can.frequency(1000000); // CANのビットレートを指定

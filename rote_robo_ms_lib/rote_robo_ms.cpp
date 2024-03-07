@@ -118,10 +118,16 @@ void rote_robo_ms::rote_robo_ms_update_write(int *motor, int submotornum)
     // printf("motor%d: sumRS:%d deltaR:%d tmpR:%d rote:%d spd:%d\n",_motornum,(int)sumRstatic,deltaR,tmpR,(int)rote,spd);
 }
 
+long rote_robo_ms::get_rote_dynamic()
+{
+	return sumRdymamic;
+}
+
 long rote_robo_ms::get_rote_sum()
 {
     return sumRstatic;
 }
+
 void rote_robo_ms::set_static_reset(int num)
 {
     sumRstatic = num;

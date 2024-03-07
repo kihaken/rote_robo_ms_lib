@@ -63,7 +63,6 @@ void rote_robo_ms::rote_robo_ms_update(CANMessage *msg, int BUFFER_MAX)
         deltaR = 0;
     }
 
-
     position = (float)sumRstatic / 36 * 0.01744 * _rad;
     // printf("%x\n",msgnum);
     // printf("motor%d length:%d spd:%d rote:%d deltaR:%d\n",_motornum,(int)sumLength,spd,(int)sumRdynamic,deltaR);
@@ -116,11 +115,6 @@ void rote_robo_ms::rote_robo_ms_update_write(int *motor, int submotornum)
         deltaR = 0;
     }
     // printf("motor%d: sumRS:%d deltaR:%d tmpR:%d rote:%d spd:%d\n",_motornum,(int)sumRstatic,deltaR,tmpR,(int)rote,spd);
-}
-
-long rote_robo_ms::get_rote_dynamic()
-{
-	return sumRdymamic;
 }
 
 long rote_robo_ms::get_rote_sum()
